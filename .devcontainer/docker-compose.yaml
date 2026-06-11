@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: 'mcp-nextjs-dev'
+    build:
+      context: ../
+      dockerfile: ./.devcontainer/Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ../:/workspace:cached
+      - mcp_node_modules:/workspace/node_modules
+      - pnpm_store:/pnpm-store
+      - mcp_nextjs_next:/workspace/.next
+    environment:
+      - PNPM_STORE_DIR=/pnpm-store
+    command: sleep infinity
+    networks:
+      - dev
+
+networks:
+  dev:
+    name: dev
+    driver: bridge
+
+volumes:
+  mcp_node_modules:
+  pnpm_store:
+  mcp_nextjs_next:

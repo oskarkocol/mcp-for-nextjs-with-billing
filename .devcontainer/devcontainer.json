@@ -1,0 +1,15 @@
+{
+  "name": "Next.js environment for MCP with Next.js",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "oxc.oxc-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install -g pnpm && npm install -g vercel && pnpm install"
+}
